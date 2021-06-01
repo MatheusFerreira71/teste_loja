@@ -1,0 +1,39 @@
+.slider {
+    clip-path: polygon(50% 0px, 100% 0px, 100% 88.88%, 50% 93.14%, 0px 100%, 0px 0px);
+    img {
+        background: linear-gradient(#000000 100%, #202020 52%, #c4c4c4 0%);
+        width: 100%;
+    }
+}
+
+.banner-text {
+    padding: var(--container-size);
+    position: absolute;
+    top: 40%;
+
+    p,
+    h1 {
+        color: var(--white);
+        font-weight: 400;
+    }
+
+    h1 {
+        font-size: 2.625rem;
+    }
+
+    p {
+        font-size: 1.5rem;
+    }
+}
+
+.swiper-pagination {
+    margin-bottom: 1rem;
+}
+
+.slider-box {
+    height: 350px;
+}
+
+.swiper-pagination-bullet {
+    box-shadow: 0px 4px 4px 0px #00000040;
+}

@@ -1,7 +1,15 @@
+import Navbar from "./components/Navbar";
+import Banner from "./components/Banner";
+import Home from './components/Home';
 
 function App() {
   return (
-    <h1>Hello World</h1>
+    <>
+      <Navbar>
+        <Banner />
+      </Navbar>
+      <Home />
+    </>
   );
 }
 
