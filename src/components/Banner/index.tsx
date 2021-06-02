@@ -1,13 +1,12 @@
 import './style.scss';
 // Import Swiper styles
 import 'swiper/swiper.scss';
-import 'swiper/components/navigation/navigation.scss';
 import 'swiper/components/pagination/pagination.scss';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
-import SwiperCore, { Navigation, Pagination } from 'swiper'
+import SwiperCore, { Pagination } from 'swiper'
 
-SwiperCore.use([Navigation, Pagination]);
+SwiperCore.use([Pagination]);
 
 function Banner() {
   return (

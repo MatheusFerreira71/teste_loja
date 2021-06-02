@@ -1,11 +1,22 @@
 import './style.scss';
+import { useState, useEffect } from 'react';
 
 import { ReactComponent as LockerIcon } from '../../assets/svg/cadeado.svg';
 import { ReactComponent as CardIcon } from '../../assets/svg/cartao.svg';
 import { ReactComponent as TruckIcon } from '../../assets/svg/caminhao.svg';
-import { ReactComponent as FullStarIcon } from '../../assets/svg/estrela-cheia.svg';
+import ProductList from '../ProductList';
+import { Category, Product } from '../../interfaces';
+import api from '../../services/api';
 
 function Home() {
+  const [allProducts, setAllProducts] = useState<Product[]>([]);
+  const [categories, setCategories] = useState<Category[]>([]);
+
+  useEffect(() => {
+    api.get<Product[]>('products').then(response => setAllProducts(response.data));
+    api.get<Category[]>('categories').then(response => setCategories(response.data));
+  }, []);
+
   return (
     <main>
       <section className="site-info">
@@ -38,114 +49,13 @@ function Home() {
         </div>
       </section>
 
-      <section className="products-section">
-        <div className="title">
-          <div className="line"></div>
-          <h1>Destaques</h1>
-        </div>
-        <div className="products">
-          <article>
-            <div className="image-container">
-              <img src={require('../../assets/images/category-1.jpeg').default} alt="Imagem do Produto" />
-            </div>
-            
-            <div className="product-content">
-              <p>Box de Livros - Senhor Dos Anéis (3 Volumes) + Pôster</p>
+      <ProductList products={allProducts} />
 
-              <div className="stars">
-                <FullStarIcon />
-                <FullStarIcon />
-                <FullStarIcon />
-                <FullStarIcon />
-                <FullStarIcon />
-              </div>
-
-              <small className="discount">R$ 114,50</small>
-
-              <h1>R$ 97,99</h1>
-
-              <small className="conditions">Ou R$ 88,20 com 10% off no boleto</small>
-
-              <button type="button">Comprar</button>
-            </div>
-          </article>
-          <article>
-            <div className="image-container">
-              <img src={require('../../assets/images/category-1.jpeg').default} alt="Imagem do Produto" />
-            </div>
-
-            <div className="product-content">
-              <p>Box de Livros - Senhor Dos Anéis (3 Volumes) + Pôster</p>
-
-              <div className="stars">
-                <FullStarIcon />
-                <FullStarIcon />
-                <FullStarIcon />
-                <FullStarIcon />
-                <FullStarIcon />
-              </div>
-
-              <small className="discount">R$ 114,50</small>
-
-              <h1>R$ 97,99</h1>
-
-              <small className="conditions">Ou R$ 88,20 com 10% off no boleto</small>
-
-              <button type="button">Comprar</button>
-            </div>
-          </article>
-          <article>
-            <div className="image-container">
-              <img src={require('../../assets/images/category-1.jpeg').default} alt="Imagem do Produto" />
-            </div>
-
-            <div className="product-content">
-              <p>Box de Livros - Senhor Dos Anéis (3 Volumes) + Pôster</p>
-
-              <div className="stars">
-                <FullStarIcon />
-                <FullStarIcon />
-                <FullStarIcon />
-                <FullStarIcon />
-                <FullStarIcon />
-              </div>
-
-              <small className="discount">R$ 114,50</small>
-
-              <h1>R$ 97,99</h1>
-
-              <small className="conditions">Ou R$ 88,20 com 10% off no boleto</small>
-
-              <button type="button">Comprar</button>
-            </div>
-          </article>
-          <article>
-            <div className="image-container">
-              <img src={require('../../assets/images/category-1.jpeg').default} alt="Imagem do Produto" />
-            </div>
-
-            <div className="product-content">
-              <p>Box de Livros - Senhor Dos Anéis (3 Volumes) + Pôster</p>
-
-              <div className="stars">
-                <FullStarIcon />
-                <FullStarIcon />
-                <FullStarIcon />
-                <FullStarIcon />
-                <FullStarIcon />
-              </div>
-
-              <small className="discount">R$ 114,50</small>
-
-              <h1>R$ 97,99</h1>
-
-              <small className="conditions">Ou R$ 88,20 com 10% off no boleto</small>
-
-              <button type="button">Comprar</button>
-            </div>
-          </article>
-        </div>
-      </section>
+      {categories.map(category => {
+        if (category.product.length > 3) {
+          return <ProductList products={category.product} title={category.name}/>
+        }
+      })}
     </main>
   );
 }
