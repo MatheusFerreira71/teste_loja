@@ -35,3 +35,8 @@ export interface ProductListProps {
 export interface ProductItemProps {
     product: Product;
 }
+
+export interface NewsletterForm {
+    email: string;
+    nome: string;
+}

@@ -1,0 +1,91 @@
+.company-info {
+    height: 256px;
+    background: var(--black);
+    padding: var(--container-size);
+
+    h2 {
+        display: inline-block;
+        margin-top: 32px;
+        margin-bottom: 18px;
+        font-weight: 700;
+        color: var(--primary);
+        padding-bottom: 8px;
+        border-bottom: 2px solid var(--white);
+    }
+
+    .about-us {
+        display: flex;
+        justify-content: flex-start;
+        margin-bottom: 32px;
+
+        .info-item {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+
+            margin-right: 100px;
+
+            & > svg {
+                margin-bottom: 8px;
+                width: 21px;
+                height: 17px;
+                color: var(--primary);
+            }
+
+            .info-list {
+                li {
+                    margin-bottom: 18.75px;
+                    &:last-child {
+                        margin: 0;
+                    }
+
+                    a {
+                        font-weight: 400;
+                        color: var(--white);
+                        transition: filter 200ms ease;
+                    }
+                }
+            }
+
+            .address {
+                p {
+                    color: var(--white);
+                    margin-bottom: 19px;
+
+                    &:last-child {
+                        margin: 0;
+                    }
+                }
+            }
+
+            a {
+                text-decoration: none;
+                color: var(--white);
+                transition: filter 200ms ease;
+
+                &:hover {
+                    filter: brightness(0.8);
+                }
+                svg {
+                    color: var(--white-2);
+                    width: 15px;
+                    height: 15px;
+                }
+            }
+
+            .contact {
+                li {
+                    margin-bottom: 12px;
+
+                    a {
+                        svg {
+                            width: 16px;
+                            height: 16px;
+                            margin-right: 8px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

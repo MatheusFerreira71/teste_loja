@@ -53,8 +53,9 @@ function Home() {
 
       {categories.map(category => {
         if (category.product.length > 3) {
-          return <ProductList products={category.product} title={category.name}/>
+          return <ProductList products={category.product} title={category.name} key={category.id} />
         }
+        return '';
       })}
     </main>
   );

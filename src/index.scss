@@ -41,3 +41,13 @@ ul {
     margin: 0;
     list-style-type: none;
 }
+
+input[type="text"] {
+    background: var(--white);
+    border: none;
+    padding: 0 8px;
+    
+    &:focus-visible {
+        outline: none;
+    }
+}
